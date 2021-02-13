@@ -6,15 +6,12 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
     \chapter{Introduzione}\label{ch:introduzione}
-    In questo capitolo si descrive il problema da affrontare e l'obiettivo da raggiungere.
-
-
     \section{Il problema da affrontare}\label{sec:Il-problema-da-affrontare}
-    Un'applicazione web a tre livelli è composta da un web server (WB), un application server (AS) e un Database (DB): i servizi sono chiamati in sequenza.
+    Un' applicazione web a tre livelli è composta da un web server (WB), un application server (AS) e un Database (DB): i servizi sono chiamati in sequenza.
     Ogni server è replicato rispettivamente in C\textsubscript{WS}, C\textsubscript{AS} e C\textsubscript{DB} istanze, ognuna delle quali gira su una macchina diversa che condivide una coda comune di capacità finita K\textsubscript{WS}, K\textsubscript{AS} e K\textsubscript{DB}.
     \newline Tre tipi di richieste popolano il sistema:
     \begin{itemize}
-        \item \textbf{N\textsubscript{U}} richieste dell'utente (caratterizzate da un tempo pensatoZU);
+        \item \textbf{N\textsubscript{U}} richieste dell' utente (caratterizzate da un \textit{think time} Z\textsubscript{U});
         \item \textbf{N\textsubscript{S}} requisiti software di chiamata di procedura remota;
         \item \textbf{N\textsubscript{B}} programmi di collaborazione.
     \end{itemize}
@@ -57,5 +54,16 @@
 
     \section{Obiettivo}\label{sec:Obiettivo}
     Vogliamo determinare il numero minimo di repliche C\textsubscript{WS}, C\textsubscript{AS} e C\textsubscript{DB} per ogni server tale che le richieste siano servite in media in meno di 2 \textit{sec}.
-
+    
+    \section{Struttura del documento}\label{sec:struttura-del-documento}
+    \textbf{Chapter 1: Introduzione.}
+    Il capitolo ha lo scopo di illustrare il problema da affrontare, i dati a disposizione e l'obiettivo da raggiungere.
+    \\
+    \textbf{Chapter 2: Il modello.}
+    Si descrivono nel dettaglio le scelte implementative e il modello sviluppato.
+    \\
+    \textbf{Chapter 3: Analisi delle performance.}
+    Si analizza il modello dal punto di vista delle performance; si descrive anche l'approccio utilizzato per raggiungere l'obiettivo prefissato.
+    \\
+    \textbf{Chapter 4: References.}
 \end{document}
