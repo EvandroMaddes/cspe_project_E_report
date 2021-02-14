@@ -7,15 +7,19 @@
 \begin{document}
     \chapter{Introduzione}\label{ch:introduzione}
     \section{Il problema da affrontare}\label{sec:Il-problema-da-affrontare}
-    Un' applicazione web a tre livelli è composta da un web server (WB), un application server (AS) e un Database (DB): i servizi sono chiamati in sequenza.
-    Ogni server è replicato rispettivamente in C\textsubscript{WS}, C\textsubscript{AS} e C\textsubscript{DB} istanze, ognuna delle quali gira su una macchina diversa che condivide una coda comune di capacità finita K\textsubscript{WS}, K\textsubscript{AS} e K\textsubscript{DB}.
+    Un' applicazione web a tre livelli è composta da un web server (WB), un application server (AS) e un Database (DB):
+    i servizi sono chiamati in sequenza.
+    Ogni server è replicato rispettivamente in C\textsubscript{WS}, C\textsubscript{AS} e C\textsubscript{DB} istanze,
+    ognuna delle quali gira su una macchina diversa che condivide una coda comune di capacità finita K\textsubscript{WS},
+    K\textsubscript{AS} e K\textsubscript{DB}.
     \newline Tre tipi di richieste popolano il sistema:
     \begin{itemize}
         \item \textbf{N\textsubscript{U}} richieste dell' utente (caratterizzate da un \textit{think time} Z\textsubscript{U});
         \item \textbf{N\textsubscript{S}} requisiti software di chiamata di procedura remota;
         \item \textbf{N\textsubscript{B}} programmi di collaborazione.
     \end{itemize}
-    Ogni tipo di richiesta richiede una diversa quantità di tempo da ogni risorsa, secondo una distribuzione esponenziale che segue la media mostrata nella tabella sottostante.
+    Ogni tipo di richiesta richiede una diversa quantità di tempo da ogni risorsa, secondo una distribuzione
+    esponenziale che segue la media mostrata nella tabella sottostante.
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|c|l|c|}
@@ -27,13 +31,13 @@
             \textbf{DB} & 20         & 50         & 40         \\
             \hline
         \end{tabular}
-        \caption{Tempo richiesto da ogni risorsa per tipo di richiesta, espresso in \textit{ms}}
+        \caption{Tempo richiesto da ogni risorsa per tipo di richiesta, espresso in \textit{ms}.}
         \label{tab:tempo-richiesto-da-ogni-risorsa-per-tipo-di-richiesta}
     \end{table}
 
     Le richieste che arrivano ad una stazione piena sono bloccate dopo essere state servite.
 
-    \subsection{Set di parametri}\label{subsec:set-di-parametri}
+    \subsection{Parametri del problema}\label{subsec:parametri-del-problema}
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|c|l|c|l|c|l|c|}
@@ -47,13 +51,14 @@
             2           & 8                            & 30                           & 60                           & 10                          & 50                          & 100                         & 2 \textit{min}              \\
             \hline
         \end{tabular}
-        \caption{Set di parametri del problema}
+        \caption{\textit{Set} di parametri del problema.}
         \label{tab:set di parametri}
     \end{table}
 
 
     \section{Obiettivo}\label{sec:Obiettivo}
-    Vogliamo determinare il numero minimo di repliche C\textsubscript{WS}, C\textsubscript{AS} e C\textsubscript{DB} per ogni server tale che le richieste siano servite in media in meno di 2 \textit{sec}.
+    Si vuole determinare il numero minimo di repliche C\textsubscript{WS}, C\textsubscript{AS} e C\textsubscript{DB}
+    per ogni server tale che le richieste siano servite in media in meno di 2 \textit{sec}.
     
     \section{Struttura del documento}\label{sec:struttura-del-documento}
     \textbf{Chapter 1: Introduzione.}

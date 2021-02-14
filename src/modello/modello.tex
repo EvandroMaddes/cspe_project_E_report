@@ -12,30 +12,36 @@
     \chapter{Descrizione del modello}\label{ch:descrizione-del-modello}
     Il modello sviluppato è stato implementato usando l'applicativo \textit{JSIMgraph}.
 
-
     \section{Formalizzazione del problema}\label{sec:formalizzazione-del-problema}
-    Dalla descrizione del problema ho deciso di modellarlo come un modello multi-classe con tre stazioni di coda.
+    Partendo dalla descrizione del problema, si è deciso di sviluppare un modello multi-classe con tre stazioni di coda.
     Ogni stazione di coda rappresenta un diverso componente dell'architettura \textit{three tier}.
-    Le stazioni di coda sono disposte in sequenza: stazione del \textit{web server}, la stazione del \textit{application server} e infine la stazione del \textit{database}
+    Le stazioni di coda sono disposte in sequenza: stazione del \textit{web server}, la stazione del
+    \textit{application server} e infine la stazione del \textit{database}.
+    \newline
     In particolare, ogni stazione è caratterizzata da una coda limitata e dal numero di repliche.
-    Al termine della sequenza delle tre stazioni di coda, i diverrsi \textit{jobs} vengono riportati al \textit{web server}
+    Al termine della sequenza delle tre stazioni di coda, i diversi \textit{jobs} vengono instradati verso il
+    \textit{web server}.
 
     \begin{figure}[H]
         \includegraphics[scale = 0.3]{assets/three_tier}\\
-        \caption[\textit{Architettura} del modello]{architetture del modello di alto livello.}
+        \caption[\textit{Architettura} alto livello]{architetture del modello di alto livello.}
         \label{fig:architettura-alto-livello-modello}
     \end{figure}
 
 
     \section{Le classi}\label{sec:le-classi}
-    I \textit{jobs} che circolano nel sistema sonno stati identificati con tre diverse classi: tutti i \textit{jobs} che appartengono alla stessa classe, sono caratterizzati dalle stesse proprietà.
+    I \textit{jobs} che circolano nel sistema sonno stati identificati con tre diverse classi: tutti i \textit{jobs}
+    che appartengono alla stessa classe, sono caratterizzati dalle stesse proprietà.
     \begin{itemize}
         \item \textbf{N\textsubscript{U}} richieste dell'utente (caratterizzate da un \textit{think time} Z\textsubscript{U}).
         \item \textbf{N\textsubscript{S}} requisiti software di chiamata di procedura remota;
         \item \textbf{N\textsubscript{B}} programmi di collaborazione.
     \end{itemize}
-    Tutte e tre le classi sono di tipo chiuso e sono caratterizzazate da una diversa popolazione (numero di \textit{jobs}). Tuttavia solo la classe
-    La \textit{reference station} per la classe chiamata di procedura remota (S) e per la classe programmi di collaborazione (B), è la stazione \textit{web server}; metre per la classe (richieste dell'utente) è la stazione di ritardo.
+    Tutte e tre le classi sono di tipo chiuso e sono caratterizzate da una diversa popolazione (numero di \textit{jobs}).
+    Tuttavia solo la classe richieste dell'utente (U), presenta un \textit{think time}. Questa specifica è gestita
+    tramite una stazione di ritardo.
+    La \textit{reference station} per la classe chiamata di procedura remota (S) e per la classe programmi di collaborazione
+    (B), è la stazione \textit{web server}; metre per la classe (richieste dell'utente) è la stazione di ritardo.
     \begin{figure}[H]
         \centering
         \includegraphics[scale = 0.5]{assets/classes.png}\\
@@ -46,8 +52,9 @@
 
     \section{Le componenti del modello}\label{sec:le-componenti-del-modello}
     A livello architettonico si possono distinguere quattro stazioni ed un router.
-    Tutte le stazioni di coda hanno una capacità limitata e questo implica l'adozione di una politica di gestione in caso la capacità massima viene ragiunta.
-    La regola utilizzata è \textit{blocking after service(BAS)} per rispettare al meglio le richieste del problema.
+    Tutte le stazioni di coda hanno una capacità limitata e questo implica l'adozione di una politica di gestione nel
+    caso la capacità massima venga ragiunta.
+    La regola utilizzata è \textit{blocking after service (BAS)} per rispettare al meglio le richieste del problema.
     La politica di selezione del prossimo \textit{job} (o di coda) adottata è una  \textit{non-preemptive} di tipo \textit{first come first served (FCFS)}.
     \begin{figure}[H]
         \centering

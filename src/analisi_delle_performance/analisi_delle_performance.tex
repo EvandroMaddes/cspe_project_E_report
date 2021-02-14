@@ -13,7 +13,7 @@
     sono:
     \begin{itemize}
         \item violazione della \textit{service center flow balance}: le perdite non assicurano un ugual numero di arrivi
-        \item e completamenti ad ogni stazione.
+      e completamenti ad ogni stazione;
         \item violazione della \textit{device homogeneity property}: l'utilizzo di code con capacità limitata non
         rispetta questa assunzione.
     \end{itemize}
@@ -26,8 +26,8 @@
 
     \subsection{Analisi dei dati a disposizione}\label{subsec:analisi-dei-dati-a-disposizione}
     Ispezionando i dati a disposizione [\ref{tab:tempo-richiesto-da-ogni-risorsa-per-tipo-di-richiesta}],
-    [\ref{tab:set di parametri}, si nota che la classe più popolosa presente nel sistema sono i programmi di
-    collaborazione(B). La stazione \textit{application server} ha un \textit{service time} medio per la suddetta classe
+    [\ref{tab:set di parametri}], si nota che la classe più popolosa presente nel sistema sono i programmi di
+    collaborazione (B). La stazione \textit{application server} ha un \textit{service time} medio per la suddetta classe
     di 120\textit{ms}, maggior valore tra i \textit{service times}.
     Dunque ci aspettiamo che la stazione \textit{application server} abbia bisogno di un maggior numero di repliche
     rispetto le altre due stazione.
@@ -36,7 +36,7 @@
     Tali considerazioni però non tengono conto della lunghezza delle code di ogni stazione che incide in modo
     determinante sulle performance di un sistema.
     Per quanto riguarda la topologia del modello, la stazione con il \textit{throughput} minore influenza le
-    stazioni successive ed essendo il modello "circolare", incide sulle altre due stazioni.
+     due stazioni successive essendo il modello "circolare".
 
     \subsection{Modus operandi}\label{subsec:modus-operandi}
     L'analisi del modello è stata condotta partendo da una configurazione base rispetto al numero di repliche per ogni
@@ -46,16 +46,16 @@
     aumentarne il numero di repliche.
     Per individuare il collo di bottiglia si è preso in considerazione l'utilizzo di ogni stazione, il valore medio più
     elevato decreta a quale stazione aumentare di uno il numero di repliche.
-    Nell'aumentare il numero di repliche, si è anche aggiornato la capacità complessiva della stazione.
+    Nell'aumentare il numero di repliche, si è anche aggiornata la capacità complessiva della relativa stazione
     \footnote{\textit{JSIMgrapf} richiede di definire la capacità di una stazione di coda come somma di \textit{jobs} in
-    coda e \textit{jobs} che sono processati.}
+    coda e \textit{jobs} che sono processati.}.
     L'obiettivo è di avere il \textit{response time} del sistema al di sotto dei 2 \textit{sec}, per cui questi passaggi
     sono stati ripetuti fino al raggiungimento di tale obiettivo.
 
 
     \section{Soluzioni ottenute}\label{sec:soluzioni-ottenute}
-    In tutte le soluzioni ottenute, gli indici analizzati sono arrivati a convergenza. per ognuno di essi l'intervallo
-    di confidenza è pari a 0,99 mentrre l'errore relativo è del 3\%.
+    In tutte le soluzioni ottenute, gli indici analizzati sono arrivati a convergenza. Per ognuno di essi l'intervallo
+    di confidenza è pari a 0,99 mentre l'errore relativo è del 3\%.
     \newline
     Applicando quando detto nella sezione [\ref{subsec:modus-operandi}], la prima configurazione a raggiungere
     l'obiettivo è:
@@ -70,14 +70,14 @@
             \textbf{DB} & 0.8782                  & 0.8992                    & 4                               \\
             \hline
         \end{tabular}
-        \caption{numero di repliche e utilizzo per ogni stazione coda presente nel sistema, soluzione 1.}
+        \caption{Numero di repliche e utilizzo per ogni stazione coda presente nel sistema, soluzione 1.}
         \label{tab:valori-soluzione-1-del-problema}
     \end{table}
 
     Con questa configurazione [\ref{tab:valori-soluzione-1-del-problema}], si ottiene un \textit{response time} medio del
     sitema pari a 1999,92 \textit{ms}.
     Sebbene riesca ad essere sotto i 2 \textit{sec} richiesti dal progetto, analizzando il valore massimo, esso è pari a
-    2017,92 \textit{ms}, non abbastanza da soddisfare le richeiste del prolema.
+    2017,92 \textit{ms}, non abbastanza da soddisfare le richieste del problema.
     Per avere un picco massimo del \textit{response time} del sistema sotto i 2 \textit{sec}, bisogna aggiungere un
     ulteriore replica alla stazione del \textit{application server}.
     \newline
@@ -94,7 +94,7 @@
             \textbf{DB} & 0.9868                  & 1.0041                    & 4                               \\
             \hline
         \end{tabular}
-        \caption{numero di repliche e utilizzo per ogni stazione coda presente nel sistema, soluzione 2.}
+        \caption{Numero di repliche e utilizzo per ogni stazione coda presente nel sistema, soluzione 2.}
         \label{tab:valori-soluzione-2-del-problema}
     \end{table}
 
@@ -103,17 +103,21 @@
     Ambedue i valori sono al di sotto del valore richiesto.
 
 
-    \section{\textit{What if} delle soluzioni ottenute}\label{sec:what-if-analysis}
+    \section{\textit{What-if analysis} delle soluzioni ottenute}\label{sec:what-if-analysis-delle-soluzioni-ottenute}
+    Si è utilizzato lo strumento \textit{What-if analysis} di \textit{JSIMgraph} per valutare il comportamento delle
+    soluzioni ottenute.
+    Si è deciso di studiare il comportamento del modello rispetto alla classe più popolosa presente nel sistema.\newline
+    Quindi si è incrementata la popolazione della classe programmi di collaborazione (B) da un valore iniziale di 50 fino ad
+    un valore finale di 120.
+    Tali valori sono stati scelti prendendo in considerazione la reale popolazione della classe programmi di
+    collaborazione (B): 100.
+    Il numero di \textit{steps} è stato selezionato pari a 35, in modo da aggiungere due \textit{jobs} per volta.
 
-    \subsection{Soluzione 1}\label{subsec:soluzione 1}
-    Per l'analisi delle soluzioni ottenute, si è incrementata la popolazione classe programmi di collaborazione (B) da
-    un valore iniziale di 50 fino ad un valore finale di 110. Tali valori sono stati scelti prendendo in considearazione
-    la reale popolazione della classe programmi di collaborazione (B): 100.
-    Questa classe risulta essere la più presente per cui è ragionevole analizzare il comportamento del sistema rispetto
-    le sue variazioni.
+
+    \subsection{Utilizzo delle stazioni di coda}\label{subsec:utilizzo-delle-stazioni-di-coda}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale = 0.6]{assets/u_ws_174.png}\\
+        \includegraphics[scale = 0.5]{assets/utilization_ws.png}\\
         \caption[\textit{Utilizzo} della stazione \textit{web server}]{Utilizzo della stazione \textit{web server} al
         variare di N\textsubscript{B}.}
         \label{fig:utilizzo-ws}
@@ -124,27 +128,99 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[scale = 0.6]{assets/u_as_174.png}\\
-        \caption[\textit{Utilizzo} della stazione \textit{application server}]{Utilizzo della stazione \textit{
+        \includegraphics[scale = 0.5]{assets/utilization_as.png}\\
+        \caption[\textit{Utilizzo} della stazione \textit{application server}]{Utilizzo della stazione\textit{
             application server} al variare di N\textsubscript{B}.}
         \label{fig:utilizzo-as}
     \end{figure}
     Il grafico mostra un andamento opposta al precedente grafico [\ref{fig:utilizzo-ws}]; è evidente come l'
     \textit{application server} rappresenti il bottleneck di tale sistema e il suo throughput limitato, limiti anche le
-    altre risorse del sistema. L'utilizzo medio infatti parte gia da valori elevati (0.9) per arrivare a circa 1
+    altre risorse del sistema. L'utilizzo medio infatti parte gia da valori elevati (0.8) per arrivare a circa 1.
+
     \begin{figure}[H]
         \centering
-        \includegraphics[scale = 0.6]{assets/u_db_174.png}\\
-        \caption[\textit{Utilizzo} della stazione \textit{database}]{Utilizzo della stazione \textit{
+        \includegraphics[scale = 0.5]{assets/utilization_db.png}\\
+        \caption[\textit{Utilizzo} della stazione \textit{database}]{Utilizzo della stazione\textit{
             databse} al variare di N\textsubscript{B}.}
         \label{fig:utilizzo-db}
     \end{figure}
     Il grafico ha un andamento simile al primo grafico mostrato [\ref{fig:utilizzo-ws}], per cui
-    considerazioni a quelle fatte per il \textit{web server} possono essere ripetute anche per il \textit{database}.
+    considerazioni simili   a quelle fatte per il \textit{web server} possono essere ripetute anche per il \textit{database}.
 
+    \subsection{\textit{Queue time} e \textit{residence time}}\label{subsec:queue-time-e-residence-time}
+    Di seguito sono riportati i grafici relativi al \textit{residence time}, in quanto quelli relativi al \textit{queue time}
+    presentano lo stesso andamento.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.5]{assets/residence_ws.png}\\
+        \caption[\textit{Residence time} del \textit{web server}]{\textit{residence time} del \textit{web server}.}
+        \label{fig:residence-time-ws}
+    \end{figure}
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.5]{assets/residence_as.png}\\
+        \caption[\textit{Residence time} dell' \textit{application server}]{\textit{residence time} dell' \textit{application server}.}
+        \label{fig:residence-time-as}
+    \end{figure}
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.5]{assets/residence_db.png}\\
+        \caption[\textit{Residence time} del \textit{database server}]{\textit{residence time} del \textit{database server}.}
+        \label{fig:residence-time-db}
+    \end{figure}
+    Quelli relativi al \textit{web server} e all'\textit{application server} mostrano un incremento del
+    \textit{residence time} e del \textit{queue time} all'aumentare di N\textsubscript{B}.
+    Un comportamento opposto risulta per il \textit{database}, i relativi grafici mostrano una diminuizione all'
+    incrementare di N\textsubscript{B}.
+    Ancora una volta, questi comportamenti possono trovare una giustificazione nel \textit{throughput} limitato dalla
+    stazione \textit{application server}.
 
+    \subsection{\textit{Response time} del sistema}\label{subsec:response-time-del-sistema}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.5]{assets/response_system.png}\\
+        \caption[\textit{Response time} medio del sistema]{\textit{Response time} medio del sistema.}
+        \label{fig:response-time-system}
+    \end{figure}
+    Il grafico mostra un andamento crescente al crescere del numero di \textit{jobs} nel sistema.
+    In corrispondenza di N\textsubscript{B} pari a 100 (sulle ascisse 1.6) \footnote{sull'asse delle ascisse è riportato
+    il numero totale dei \textit{jobs} nel sistema: \textbf{N\textsubscript{U}} + \textbf{N\textsubscript{S}} +
+    \textbf{N\textsubscript{B}} = 10 + 50 + 100 = 160}, il valore del \textit{Response time} del sistema è di circa 2
+    \textit{sec} come atteso dalle precedenti simulazioni [\ref{tab:valori-soluzione-1-del-problema}].
+
+    \subsection{Soluzione 2}\label{subsec:soluzione-2}
+    Come per la prima soluzione trovata [\ref{tab:valori-soluzione-1-del-problema}], anche per la seconda è stata condotta
+    la stessa \textit{what-if analysis}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.5]{assets/utilization_2_ws.png}\\
+        \caption[\textit{Utilizzo} della stazione \textit{web server}, soluzione 2]{Utilizzo della stazione
+        \textit{web server} al variare di N\textsubscript{B}, soluzione 2.}
+        \label{fig:utilizzo-2-ws}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.5]{assets/utilization_2_as.png}\\
+        \caption[\textit{Utilizzo} della stazione \textit{application server}, soluzione 2]{Utilizzo della stazione
+        \textit{application server} al variare di N\textsubscript{B}, soluzione 2.}
+        \label{fig:utilizzo-2-as}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.5]{assets/utilization_2_db.png}\\
+        \caption[\textit{Utilizzo} della stazione \textit{database}, soluzione 2]{Utilizzo della stazione
+        \textit{database} al variare di N\textsubscript{B}, soluzione 2.}
+        \label{fig:utilizzo-2-db}
+    \end{figure}
+
+    Come si può notare nel grafico dell'utilizzo del \textit{database}, esso si attesta su valori in un intorno di 1.
+    Dunque, i risultati evidenziano come in questo caso il nuovo collo di bottiglia del sistema diventi la stazione
+    \textit{database}, differentemente a ciò che accadeva nella soluzione 1 [\ref{tab:valori-soluzione-1-del-problema}].
 
 
 \end{document}
