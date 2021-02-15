@@ -8,18 +8,17 @@
 \begin{document}
     \chapter{Analisi delle performance}\label{ch:analisi-delle-performance}
 
-    La soluzione per via analitica del problema è impraticabile considerata la natura del
-    modello utilizzato. I fattori principali che impediscono l’utilizzo di tecniche analitiche
+    La soluzione per via analitica del problema è impraticabile considerata la natura del modello utilizzato.
+    I fattori principali che impediscono l’utilizzo di tecniche analitiche:
     sono:
     \begin{itemize}
-        \item violazione della \textit{service center flow balance}: le perdite non assicurano un ugual numero di arrivi
-      e completamenti ad ogni stazione;
         \item violazione della \textit{device homogeneity property}: l'utilizzo di code con capacità limitata non
         rispetta questa assunzione.
     \end{itemize}
-    Dunque il modello non è separabile, non si possono utilizzare tecniche come la MVA (che
-    richiederebbe anche un solo server per stazione); si è deciso di procedere
-    con la simulazione a eventi discreti di JMT e con lo strumento \textit{what-if analysis}.
+    Anche se le restanti assunzioni sono rispettate, la violazione della \textit{device homogeneity property}, non
+    permette di avere una rete di code separabili.
+    Dunque non si possono utilizzare tecniche come la MVA (che richiederebbe anche un solo server per stazione); si è
+    deciso di procedere con la simulazione a eventi discreti di JMT e con lo strumento \textit{what-if analysis}.
 
 
     \section{Approccio utilizzato}\label{sec:approccio-utilizzato}
@@ -36,7 +35,7 @@
     Tali considerazioni però non tengono conto della lunghezza delle code di ogni stazione che incide in modo
     determinante sulle performance di un sistema.
     Per quanto riguarda la topologia del modello, la stazione con il \textit{throughput} minore influenza le
-     due stazioni successive essendo il modello "circolare".
+    due stazioni successive essendo il modello "circolare".
 
     \subsection{Modus operandi}\label{subsec:modus-operandi}
     L'analisi del modello è stata condotta partendo da una configurazione base rispetto al numero di repliche per ogni
@@ -113,7 +112,6 @@
     collaborazione (B): 100.
     Il numero di \textit{steps} è stato selezionato pari a 35, in modo da aggiungere due \textit{jobs} per volta.
 
-
     \subsection{Utilizzo delle stazioni di coda}\label{subsec:utilizzo-delle-stazioni-di-coda}
     \begin{figure}[H]
         \centering
@@ -145,7 +143,7 @@
         \label{fig:utilizzo-db}
     \end{figure}
     Il grafico ha un andamento simile al primo grafico mostrato [\ref{fig:utilizzo-ws}], per cui
-    considerazioni simili   a quelle fatte per il \textit{web server} possono essere ripetute anche per il \textit{database}.
+    considerazioni simili a quelle fatte per il \textit{web server} possono essere ripetute anche per il \textit{database}.
 
     \subsection{\textit{Queue time} e \textit{residence time}}\label{subsec:queue-time-e-residence-time}
     Di seguito sono riportati i grafici relativi al \textit{residence time}, in quanto quelli relativi al \textit{queue time}
