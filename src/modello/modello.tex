@@ -50,7 +50,18 @@
     \end{figure}
 
 
-    \section{Le componenti del modello}\label{sec:le-componenti-del-modello}
+    \section{L'architettura del modello completo}\label{sec:l'architettura-del-modello-completo}
+    Nel modello sono presenti le tre stazioni coda, ciascuna per ogni componente del sistema, disposte in cascate;
+    a valle troviamo il \textit{router} collegato sia alla stazione di ritardo e sia al \textit{web server}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.6]{assets/modello_jsim}\\
+        \caption[\textit{Architettura} del modello]{architettura del modello completo.}
+        \label{fig:architettura-del-modello-completo}
+    \end{figure}
+
+    \subsection{Le componenti del modello}\label{subsec:le-componenti-del-modello}
     A livello architettonico si possono distinguere quattro stazioni ed un router.
     Tutte le stazioni di coda hanno una capacità limitata e questo implica l'adozione di una politica di gestione nel
     caso la capacità massima venga ragiunta.
@@ -77,14 +88,5 @@
     \end{itemize}
 
 
-    \section{L'architettura del modello completo}\label{sec:l'architettura-del-modello-completo}
-    Riassumendo, nel modello sono presenti le tre stazioni coda, rappresentanti l'architettura \textit{three tier}, disposte in cascate; a valle troviamo il \textit{router} collegato alla stazione di ritardo e al web server.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale = 0.6]{assets/modello_jsim}\\
-        \caption[\textit{Architettura} del modello]{architettura del modello completo.}
-        \label{fig:architettura-del-modello-completo}
-    \end{figure}
 
 \end{document}
