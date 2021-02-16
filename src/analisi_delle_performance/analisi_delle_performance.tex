@@ -115,7 +115,7 @@
     \subsection{Utilizzo delle stazioni di coda soluzione 1}\label{subsec:utilizzo-delle-stazioni-di-coda}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale = 0.45]{assets/utilization_ws.png}\\
+        \includegraphics[scale = 0.45]{assets/ws_ut_1.png}\\
         \caption[\textit{Utilizzo} della stazione \textit{web server}]{Utilizzo della stazione \textit{web server} al
         variare di N\textsubscript{B}.}
         \label{fig:utilizzo-ws}
@@ -126,18 +126,18 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[scale = 0.45]{assets/utilization_as.png}\\
+        \includegraphics[scale = 0.45]{assets/as_ut_1.png}\\
         \caption[\textit{Utilizzo} della stazione \textit{application server}]{Utilizzo della stazione\textit{
             application server} al variare di N\textsubscript{B}.}
         \label{fig:utilizzo-as}
     \end{figure}
-    Il grafico mostra un andamento opposta al precedente grafico [\ref{fig:utilizzo-ws}]; è evidente come l'
+    Il grafico mostra un andamento opposto al precedente grafico [\ref{fig:utilizzo-ws}]; è evidente come l'
     \textit{application server} rappresenti il bottleneck di tale sistema e il suo throughput limitato, limiti anche le
-    altre risorse del sistema. L'utilizzo medio infatti parte gia da valori elevati (0.8) per arrivare a circa 1.
+    altre risorse del sistema. L'utilizzo medio infatti parte già da valori elevati (0.8) per arrivare a circa 1.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[scale = 0.45]{assets/utilization_db.png}\\
+        \includegraphics[scale = 0.45]{assets/db_ut_1.png}\\
         \caption[\textit{Utilizzo} della stazione \textit{database}]{Utilizzo della stazione\textit{
             databse} al variare di N\textsubscript{B}.}
         \label{fig:utilizzo-db}
@@ -171,6 +171,42 @@
     La topologia della rete e la politica di coda \textit{BAS}, non permettono di avere delle perdite nel numero di
     \textit{jobs} nel sistema, per cui la stazione che agisce da collo di bottiglia serve tutti i lavori in attesa
     limitando anche il \textit{throughput} delle altre due stazioni.
+
+    \subsection{\textit{Residence time} soluzione 1}\label{subsec:residence-time-soluzione-1}
+    Di seguito sono riportati i grafici relativi al \textit{residence time} della soluzione 1.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.45]{assets/ws_res_1.png}\\
+        \caption[\textit{Residence time} del \textit{web server}]{\textit{residence time} del \textit{web server}.}
+        \label{fig:residence-time-ws}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.45]{assets/as_res_1.png}\\
+        \caption[\textit{Residence time} del \textit{application server}]{\textit{residence time} del \textit{application server}.}
+        \label{fig:residence-time-as}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale = 0.45]{assets/db_res_1.png}\\
+        \caption[\textit{Residence time} del \textit{database}]{\textit{residence time} del \textit{database}.}
+        \label{fig:residence-time-db}
+    \end{figure}
+
+    È interessante notare come il \textit{residence time} delle stazioni \textit{web server} e dell'\textit{application server}
+    aumenti all'aumentare di N\textsubscript{B}, mentre quello del \textit{database} diminuisce.\newline
+    Sebbene per la stazione \textit{application server}, collo di bottiglia di questa configurazione, l'aumento del
+    \textit{residence time} può essere ricondotto ad una condizione di saturazione, discorso differente deve essere
+    affrontato per il \textit{web server}.
+    L'incremento non è dovuto ad una condizione di saturazione, come mostrano i grafici in sezione
+    [\ref{subsec:utilizzo-delle-stazioni-di-coda}] bensì può essere ricondotto alla politica di coda utilizzata:
+    \textit{BAS}. Nella stazione precedente al collo di bottiglia (\textit{web server}), il \textit{residence time}
+    aumenta tanto quanto il \textit{service time} medio rimasto alla stazione successiva (\textit{application server});
+    possiamo definire questo aumento come il \textit{blocking time}.
+    Per quanto riguarda il \textit{database}, il \textit{residence time} diminuisce essendo a valle del collo di
+    bottiglia.
 
     \subsection{\textit{Response time} del sistema}\label{subsec:response-time-del-sistema}
     \begin{figure}[H]
@@ -213,12 +249,11 @@
         \label{fig:utilizzo-2-db}
     \end{figure}
 
-    I grafici seguono andamenti simili a quelli presentati per la soluzione 1 per cui simili cosiderazioni si possono
+    I grafici seguono andamenti simili a quelli presentati per la soluzione 1 [\ref{subsec:utilizzo-delle-stazioni-di-coda}] per cui simili cosiderazioni si possono
     applicare anche a questa soluzione.
     Confontando i valori notiamo che l'utilization del \textit{web server} e dell' \textit{application server} sono
     aumentati rispetto alla soluzione 1.
     Questo è giustificato dal fatto che il response time, relativo al sistema, della seconda soluzione è minore.
-
 
 
 \end{document}
