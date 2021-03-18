@@ -1,7 +1,7 @@
 # Project problem
-A three tier web application is comp osed by a web server, an application
+A three tier web application is composed by a web server, an application
 server and a DB: services are called in sequence. Each server is replicated
-resp ectively in CWS, CAS and CDB instances, each one running on a different
+respectively in CWS, CAS and CDB instances, each one running on a different
 machine that shares a common queue of finite capacity KWS, KAS and KDB.
 Three types of requests populate the system: NU user requests (characterised
 by a think time ZU), NS remote procedure call software agents, and NB batch
